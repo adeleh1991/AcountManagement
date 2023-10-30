@@ -42,6 +42,5 @@ public class CustomerService {
 
     public void createCustomer(Customer customer){
         customerRepository.save(customer);
-        System.out.println("CUSTOMER DATA :"+customer.toString());
     }
 }

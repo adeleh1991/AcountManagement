@@ -27,9 +27,8 @@ public class AccountService {
 
     private final TransactionRepository transactionRepository;
 
-    public AccountDTO createAccount(Customer customer, Double initialCredit){
-      //  Customer customer=customerRepository.getOne(customerId);
-        System.out.println(customer);
+    public AccountDTO createAccount(Long customerId, Double initialCredit){
+        Customer customer=customerRepository.getReferenceById(customerId);
         Account account = new Account().setAccountNumber(1L) .setInitialCredit(initialCredit)
                 .setName("CurrentAccount-"+customer.getName())
                 .setBalance(initialCredit)
@@ -42,9 +41,7 @@ public class AccountService {
             transactionRepository.save(transaction);
         }
         accountRepository.save(account);
-        System.out.println("ACCOUNT :"+account);
         AccountDTO accountDTO = accountMapper.toAccountDTO(account);
-        System.out.println("ACCOUNT DTO :"+account);
         return accountDTO;
     }
 }

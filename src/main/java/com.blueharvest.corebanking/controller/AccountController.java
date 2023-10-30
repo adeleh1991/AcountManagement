@@ -14,7 +14,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping( "/create/{customerId}/{initialCredit}")
-    public AccountDTO createAccount(@RequestBody Customer customer, @PathVariable Double initialCredit){
-        return accountService.createAccount(customer,initialCredit);
+    public AccountDTO createAccount(@PathVariable Long customerId, @PathVariable Double initialCredit){
+        return accountService.createAccount(customerId,initialCredit);
     }
 }
